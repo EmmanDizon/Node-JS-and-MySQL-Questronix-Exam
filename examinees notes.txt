@@ -1,0 +1,38 @@
+MySQL + Node JS Exam.
+
+Stored Procedures created: 
+
+CREATE DEFINER=`emman`@`localhost` PROCEDURE `update_person`(first_name VARCHAR(200), last_name VARCHAR(200), home_address VARCHAR(200), contact_no VARCHAR(200), email_address VARCHAR(200), person_id INT)
+BEGIN
+UPDATE tblPersons SET FirstName = first_name,
+	 LastName = last_name, Address = home_address,
+     ContactNo = contact_no, Email = email_address
+WHERE Id = person_id;
+     
+
+END
+
+
+Table schema:
+Id INT NOT NULL PK Auto increment
+FirstName VARCHAR
+LASTNAME VARCHAR
+Address VARCHAR
+ContactNo VARCHAR
+Email VARCHAR
+
+Validations used for empty "firstname, lastname, contactNo Address, Email"
+when saving is package "Joi Validation"
+
+I used also "Joi validation package" for validating if the email is appropriate
+
+Database configuration value is at config folder -> config.env
+
+JSON format for posting on postman: 
+{
+    "FirstName": "Emman"
+    "LastName": "Dizon",
+    "Address": "Bulacan",
+    "ContactNo": "09172066495",
+    "Email": "emmanjhay@gmail.com"
+}
